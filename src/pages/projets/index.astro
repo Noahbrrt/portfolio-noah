@@ -48,10 +48,10 @@ const projects = records.map((project) => {
           Projets
         </p>
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
-          Une sélection de projets qui me ressemblent.
+          Une selection de projets qui me ressemblent.
         </h1>
         <p class="text-sm md:text-base text-white/75 max-w-2xl leading-relaxed">
-          Affiches de joueurs, refonte de site associatif, projet web autour de
+           Affiches de joueurs, refonte de site associatif, projet web autour de
           la cybersécurité… Fais défiler, et découvre chaque projet comme une
           carte à part entière.
         </p>
@@ -59,10 +59,6 @@ const projects = records.map((project) => {
 
       {/* Slider pleine largeur */}
       <section class="space-y-6">
-        <div class="flex items-center justify-between text-xs md:text-sm text-white/60">
-          <span>Utilise la molette ou le trackpad pour faire défiler.</span>
-          <span>{projects.length} projets</span>
-        </div>
 
         <div class="relative -mx-6 md:-mx-10 lg:-mx-12">
           {/* Halo ambient subtil */}
@@ -78,7 +74,7 @@ const projects = records.map((project) => {
             aria-hidden="true"
           ></div>
 
-          {/* Flèches de carrousel */}
+          {/* Flèches de carrousel (nouveau design) */}
           <button
             id="projects-prev"
             type="button"
@@ -86,11 +82,54 @@ const projects = records.map((project) => {
             class="hidden md:flex absolute top-1/2 left-4 lg:left-6 -translate-y-1/2
                    items-center justify-center h-11 w-11 rounded-full
                    border border-white/15 bg-[#170040]/70 backdrop-blur-md
-                   text-white/80 shadow-[0_8px_24px_rgba(0,0,0,0.45)]
+                   shadow-[0_8px_24px_rgba(0,0,0,0.45)]
                    transition-colors transition-transform duration-300 z-30
-                   hover:bg-fuchsia-500/80 hover:border-fuchsia-300 hover:text-white hover:scale-105"
+                   hover:bg-fuchsia-500/80 hover:border-fuchsia-300 hover:scale-105"
           >
-            <span class="text-lg leading-none">&larr;</span>
+            <div class="arrow-button arrow-button--left">
+              <div class="arrow-line one">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line two">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line three">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line four">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line five">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line six">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line seven">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+            </div>
           </button>
 
           <button
@@ -100,11 +139,54 @@ const projects = records.map((project) => {
             class="hidden md:flex absolute top-1/2 right-4 lg:right-6 -translate-y-1/2
                    items-center justify-center h-11 w-11 rounded-full
                    border border-white/15 bg-[#170040]/70 backdrop-blur-md
-                   text-white/80 shadow-[0_8px_24px_rgba(0,0,0,0.45)]
+                   shadow-[0_8px_24px_rgba(0,0,0,0.45)]
                    transition-colors transition-transform duration-300 z-30
-                   hover:bg-fuchsia-500/80 hover:border-fuchsia-300 hover:text-white hover:scale-105"
+                   hover:bg-fuchsia-500/80 hover:border-fuchsia-300 hover:scale-105"
           >
-            <span class="text-lg leading-none">&rarr;</span>
+            <div class="arrow-button">
+              <div class="arrow-line one">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line two">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line three">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line four">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line five">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line six">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+              <div class="arrow-line seven">
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+                <div class="arrow-round"></div>
+              </div>
+            </div>
           </button>
 
           {/* Carrousel */}

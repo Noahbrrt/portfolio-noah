@@ -25,3 +25,53 @@ h1,
 h2 {
   font-family: "Mortend", sans-serif !important;
 }
+
+.arrow-button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  gap: 4px;
+}
+
+.arrow-line {
+  display: flex;
+  gap: 4px;
+}
+
+/* Les petits ronds qui composent la flèche */
+.arrow-round {
+  width: 6px;
+  height: 6px;
+  background: #e879f9;           /* fuchsia, dans ton univers */
+  border-radius: 9999px;
+  box-shadow: 0 0 6px rgba(232, 121, 249, 0.7);
+}
+
+/* Décalages pour dessiner la flèche */
+.arrow-line.two {
+  transform: translateX(10px);
+}
+
+.arrow-line.three {
+  transform: translateX(20px);
+}
+
+.arrow-line.four {
+  transform: translateX(30px);
+}
+
+.arrow-line.five {
+  transform: translateX(20px);
+}
+
+.arrow-line.six {
+  transform: translateX(10px);
+}
+
+/* Version gauche = flèche retournée */
+.arrow-button--left {
+  transform: scaleX(-1);
+}

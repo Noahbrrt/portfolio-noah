@@ -130,9 +130,8 @@ const isHome = Astro.url.pathname === "/";
       /* Footer ultra léger pour la home */
       <footer class="fixed bottom-0 left-0 w-full z-40 pointer-events-none">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-center gap-6 text-sm md:text-base text-white/90 pointer-events-auto">
-          <a href="www.linkedin.com/in/noah-barret-a33836337" class="hover:text-fuchsia-300 transition-colors text-lg md:text-xl font-medium px-3 py-2">LinkedIn</a>
-          <a href="#" class="hover:text-fuchsia-300 transition-colors text-lg md:text-xl font-medium px-3 py-2">Behance</a>
-          <a href="#" class="hover:text-fuchsia-300 transition-colors text-lg md:text-xl font-medium px-3 py-2">Instagram</a>
+          <a href="https://www.linkedin.com/in/noah-barret-a33836337" target="_blank" class="hover:text-fuchsia-300 transition-colors text-lg md:text-xl font-medium px-3 py-2">LinkedIn</a>
+          <a href="https://www.behance.net/noahbarret" target="_blank" class="hover:text-fuchsia-300 transition-colors text-lg md:text-xl font-medium px-3 py-2">Behance</a>
         </div>
       </footer>
     ) : (
@@ -191,18 +190,13 @@ const isHome = Astro.url.pathname === "/";
             </h2>
             <ul class="space-y-1">
               <li>
-                <a href="www.linkedin.com/in/noah-barret-a33836337" class="hover:text-fuchsia-300 transition-colors">
-                  LinkedIn
-                </a>
+				<a href="https://www.linkedin.com/in/noah-barret-a33836337" target="_blank" class="hover:text-fuchsia-300 transition-colors">
+				  LinkedIn
+				</a>
               </li>
               <li>
                 <a href="#" class="hover:text-fuchsia-300 transition-colors">
                   Behance
-                </a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-fuchsia-300 transition-colors">
-                  Instagram
                 </a>
               </li>
             </ul>
