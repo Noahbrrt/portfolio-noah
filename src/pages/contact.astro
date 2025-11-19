@@ -3,127 +3,191 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contact — Noah Barret">
-  <main class="bg-[#170040] min-h-screen pt-20 md:pt-32 pb-12 md:pb-15 text-white">
+  <main class="relative bg-[#170040] min-h-screen pt-24 md:pt-32 pb-16 text-white">
+    {/* Décor de fond */}
     <img
       src="/wavebar.svg"
       alt=""
       loading="lazy"
       class="pointer-events-none absolute inset-x-0 top-[-10rem] w-full max-w-none opacity-[0.12] mix-blend-screen z-0"
     />
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <section class="grid gap-8 md:gap-12 md:grid-cols-2 items-start">
-        <div class="space-y-6">
-          
-          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
-            Me contacter directement.
-          </h1>
 
-          <p class="text-xs sm:text-sm md:text-base text-white/70 leading-relaxed max-w-md">
-            Tu as un projet, une idée ou simplement une question&nbsp;? Discutons-en.
-          </p>
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <section class="grid gap-10 md:grid-cols-2 items-start">
+  <!-- Colonne gauche : texte + coordonnées -->
+  <div class="space-y-10">
+    
+    <!-- Texte principal -->
+    <div class="space-y-6">
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">
+        Me contacter directement.
+      </h1>
 
-          <p class="text-xs sm:text-sm md:text-base text-white/70">
-            Tu peux aussi m'écrire directement à<br />
-            <a
-              href="mailto:noah.barret@hotmail.com"
-              class="text-fuchsia-300 hover:text-fuchsia-200 underline underline-offset-4"
-            >
-              noah.barret@hotmail.com
-            </a>
-          </p>
-        </div>
+      <p class="text-sm md:text-base text-white/70 leading-relaxed">
+        Tu as un projet, une idée ou simplement une question ? Discutons-en.
+      </p>
 
-        <div>
-          <form
-            class="space-y-4 md:space-y-6 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 shadow-xl shadow-fuchsia-500/20 backdrop-blur-sm"
-          >
-            <div class="space-y-2">
-              <label
-                for="nom"
-                class="block text-xs md:text-sm font-medium text-fuchsia-200 tracking-wide"
-              >
-                Nom complet
-              </label>
-              <input
-                id="nom"
-                type="text"
-                name="nom"
-                placeholder="Votre nom"
-                class="w-full rounded-lg md:rounded-xl bg-white/10 border border-white/20 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
-              />
-            </div>
+      <p class="text-sm md:text-base text-white/70">
+        Tu peux aussi m'écrire directement à<br />
+        <a href="mailto:noah.barret@hotmail.com"
+           class="text-fuchsia-300 hover:text-fuchsia-200 underline underline-offset-4">
+          noah.barret@hotmail.com
+        </a>
+      </p>
+    </div>
 
-            <div class="space-y-2">
-              <label
-                for="email"
-                class="block text-xs md:text-sm font-medium text-fuchsia-200 tracking-wide"
-              >
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="votre.email@exemple.com"
-                class="w-full rounded-lg md:rounded-xl bg-white/10 border border-white/20 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
-              />
-            </div>
+    <!-- Bulle coordonnées placée sous le texte -->
+    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+      <h3 class="text-sm text-white/60 uppercase tracking-[0.18em]">
+        Coordonnées
+      </h3>
+      <p class="text-sm text-white/70 mt-2">
+        Tu peux également me trouver sur les réseaux ou m'écrire directement.
+      </p>
 
-            <div class="space-y-2">
-              <label
-                for="objet"
-                class="block text-xs md:text-sm font-medium text-fuchsia-200 tracking-wide"
-              >
-                Objet
-              </label>
-              <input
-                id="objet"
-                type="text"
-                name="objet"
-                placeholder="Objet de votre message"
-                class="w-full rounded-lg md:rounded-xl bg-white/10 border border-white/20 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
-              />
-            </div>
+      <ul class="mt-4 space-y-3 text-sm text-white/90">
+        <li>
+          <a href="mailto:noah.barret@hotmail.com"
+             class="inline-flex items-center gap-3 hover:text-fuchsia-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16v16H4z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <span class="underline underline-offset-2">noah.barret@hotmail.com</span>
+          </a>
+        </li>
 
-            <div class="space-y-2">
-              <label
-                for="message"
-                class="block text-xs md:text-sm font-medium text-fuchsia-200 tracking-wide"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Votre message..."
-                class="w-full rounded-lg md:rounded-xl bg-white/10 border border-white/20 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm text-white placeholder:text-white/40 resize-none focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
-              ></textarea>
-            </div>
+        <li class="flex items-center gap-3 text-white/70">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor"
+               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 11-9 11s-9-4-9-11a9 9 0 1 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span>Montbéliard, France</span>
+        </li>
+      </ul>
 
-            <div class="flex items-start gap-3 text-xs text-white/60">
-              <input
-                id="rgpd"
-                type="checkbox"
-                class="mt-0.5 h-4 w-4 rounded border-white/30 bg-white/10 text-fuchsia-400 focus:ring-fuchsia-400/70"
-              />
-              <label for="rgpd">
-                J’accepte que ces informations soient utilisées pour répondre à
-                ma demande.
-              </label>
-            </div>
+      <div class="mt-6 flex flex-col gap-3">
+        <a href="https://www.linkedin.com/in/noah-barret-a33836337"
+           target="_blank"
+           class="inline-flex items-center gap-3 px-3 py-2 rounded-lg bg-black/30 hover:bg-black/40 border border-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor"
+               stroke-width="1.5">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2c-1.657 0-3 1.343-3 3v6h-4v-12h4v2" />
+            <rect x="2" y="9" width="4" height="12" rx="1" />
+          </svg>
+          <span class="text-sm">LinkedIn</span>
+        </a>
 
-            <div class="pt-2">
-              <button
-                type="submit"
-                class="w-full inline-flex items-center justify-center gap-2 px-6 md:px-10 py-2 md:py-3 text-[0.65rem] md:text-xs lg:text-sm font-semibold tracking-[0.25em] uppercase rounded-full bg-gradient-to-r from-fuchsia-500 to-fuchsia-400 hover:from-fuchsia-400 hover:to-pink-400 text-white shadow-lg shadow-fuchsia-500/40 transition-transform duration-200 hover:-translate-y-0.5"
-              >
-                Envoyer le message
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
+        <a href="https://www.behance.net/noahbarret"
+           target="_blank"
+           class="inline-flex items-center gap-3 px-3 py-2 rounded-lg bg-black/30 hover:bg-black/40 border border-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor"
+               stroke-width="1.5">
+            <circle cx="6.5" cy="12.5" r="1.5" />
+            <path d="M21 12v1a6 6 0 0 1-6 6h-3" />
+            <path d="M10 12h4" />
+          </svg>
+          <span class="text-sm">Behance</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Colonne droite : formulaire -->
+  <div>
+    <form
+      class="space-y-4 md:space-y-6 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 shadow-xl shadow-fuchsia-500/20 backdrop-blur-sm"
+    >
+      <div class="space-y-2">
+        <label
+          for="nom"
+          class="block text-xs md:text-sm font-medium text-fuchsia-200 tracking-wide"
+        >
+          Nom complet
+        </label>
+        <input
+          id="nom"
+          type="text"
+          name="nom"
+          placeholder="Votre nom"
+          class="w-full rounded-lg md:rounded-xl bg-white/10 border border-white/20 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <label
+          for="email"
+          class="block text-xs md:text-sm font-medium text-fuchsia-200 tracking-wide"
+        >
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="votre.email@exemple.com"
+          class="w-full rounded-lg md:rounded-xl bg-white/10 border border-white/20 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <label
+          for="objet"
+          class="block text-xs md:text-sm font-medium text-fuchsia-200 tracking-wide"
+        >
+          Objet
+        </label>
+        <input
+          id="objet"
+          type="text"
+          name="objet"
+          placeholder="Objet de votre message"
+          class="w-full rounded-lg md:rounded-xl bg-white/10 border border-white/20 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <label
+          for="message"
+          class="block text-xs md:text-sm font-medium text-fuchsia-200 tracking-wide"
+        >
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          placeholder="Votre message..."
+          class="w-full rounded-lg md:rounded-xl bg-white/10 border border-white/20 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm text-white placeholder:text-white/40 resize-none focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
+        ></textarea>
+      </div>
+
+      <div class="flex items-start gap-3 text-xs text-white/60">
+        <input
+          id="rgpd"
+          type="checkbox"
+          class="mt-0.5 h-4 w-4 rounded border-white/30 bg-white/10 text-fuchsia-400 focus:ring-fuchsia-400/70"
+        />
+        <label for="rgpd">
+          J’accepte que ces informations soient utilisées pour répondre à
+          ma demande.
+        </label>
+      </div>
+
+      <div class="pt-2">
+        <button
+          type="submit"
+          class="w-full inline-flex items-center justify-center gap-2 px-6 md:px-10 py-2 md:py-3 text-[0.65rem] md:text-xs lg:text-sm font-semibold tracking-[0.25em] uppercase rounded-full bg-gradient-to-r from-fuchsia-500 to-fuchsia-400 hover:from-fuchsia-400 hover:to-pink-400 text-white shadow-lg shadow-fuchsia-500/40 transition-transform duration-200 hover:-translate-y-0.5"
+        >
+          Envoyer le message
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
     </div>
   </main>
 </Layout>
