@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contact — Noah Barret">
+  <main class="contact-page-bg min-h-screen pt-32 pb-6 text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <section class="grid gap-12 md:grid-cols-2 items-start">
+        <div class="space-y-6">
+          
+          <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">
+            Me contacter directement.
+          </h1>
+
+          <p class="text-sm md:text-base text-white/70 leading-relaxed max-w-md">
+            Tu as un projet, une idée ou simplement une question&nbsp;? Discutons-en.
+          </p>
+
+          <p class="text-sm md:text-base text-white/70">
+            Tu peux aussi m’écrire directement à<br />
+            <a
+              href="mailto:noah.barret@hotmail.com"
+              class="text-fuchsia-300 hover:text-fuchsia-200 underline underline-offset-4"
+            >
+              noah.barret@hotmail.com
+            </a>
+          </p>
+        </div>
+
+        <div>
+          <form
+            class="space-y-6 bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 shadow-xl shadow-fuchsia-500/20 backdrop-blur-sm"
+          >
+            <div class="space-y-2">
+              <label
+                for="nom"
+                class="block text-sm font-medium text-fuchsia-200 tracking-wide"
+              >
+                Nom complet
+              </label>
+              <input
+                id="nom"
+                type="text"
+                name="nom"
+                placeholder="Votre nom"
+                class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label
+                for="email"
+                class="block text-sm font-medium text-fuchsia-200 tracking-wide"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="votre.email@exemple.com"
+                class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label
+                for="objet"
+                class="block text-sm font-medium text-fuchsia-200 tracking-wide"
+              >
+                Objet
+              </label>
+              <input
+                id="objet"
+                type="text"
+                name="objet"
+                placeholder="Objet de votre message"
+                class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label
+                for="message"
+                class="block text-sm font-medium text-fuchsia-200 tracking-wide"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Votre message..."
+                class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm text-white placeholder:text-white/40 resize-none focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:border-transparent transition"
+              ></textarea>
+            </div>
+
+            <div class="flex items-start gap-3 text-xs text-white/60">
+              <input
+                id="rgpd"
+                type="checkbox"
+                class="mt-0.5 h-4 w-4 rounded border-white/30 bg-white/10 text-fuchsia-400 focus:ring-fuchsia-400/70"
+              />
+              <label for="rgpd">
+                J’accepte que ces informations soient utilisées pour répondre à
+                ma demande.
+              </label>
+            </div>
+
+            <div class="pt-2">
+              <button
+                type="submit"
+                class="w-full inline-flex items-center justify-center gap-2 px-10 py-3 text-xs md:text-sm font-semibold tracking-[0.25em] uppercase rounded-full bg-gradient-to-r from-fuchsia-500 to-fuchsia-400 hover:from-fuchsia-400 hover:to-pink-400 text-white shadow-lg shadow-fuchsia-500/40 transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                Envoyer le message
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

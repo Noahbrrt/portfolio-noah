@@ -1,0 +1,27 @@
+/* 1. Google Fonts : Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* 2. Font Mortend depuis /public/fonts */
+@font-face {
+  font-family: "Mortend";
+  src: url("/fonts/Mortend.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 3. Tailwind (pour Astro + Tailwind 3) */
+@import "tailwindcss";
+/* 4. Typo globale + variables */
+:root {
+  --font-base: "Montserrat", sans-serif;
+}
+
+body {
+  font-family: var(--font-base) !important;
+}
+
+/* 5. Titres en Mortend */
+h1,
+h2 {
+  font-family: "Mortend", sans-serif !important;
+}

@@ -1,11 +1,130 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <main
+    id="hero-bg"
+    class="relative flex flex-col items-center justify-center min-h-screen pt-24 overflow-hidden"
+  >
+    <section class="description-container">
+      <h1 class="title word mortend">
+        <span class="char">N</span>
+        <span class="char">O</span>
+        <span class="char">A</span>
+        <span class="char">H</span>
+
+        <span class="space"></span>
+
+        <span class="char">B</span>
+        <span class="char">A</span>
+        <span class="char">R</span>
+        <span class="char">R</span>
+        <span class="char">E</span>
+        <span class="char">T</span>
+      </h1>
+
+      <p class="subtitle">COMMUNICATION WEB</p>
+    </section>
+
+    <div class="author-container">
+      <p class="title">Portfolio — 2025</p>
+    </div>
+  </main>
+
+  <section id="apropos" class="min-h-screen"></section>
+  <section id="projets" class="min-h-screen"></section>
+  <section id="contact" class="min-h-screen"></section>
+
+  <style lang="scss">
+    $bg: #170040;
+
+    :global(body) {
+      margin: 0;
+      background: $bg;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      overflow: hidden; /* Empêche le scrolling sur la page d'accueil */
+    }
+
+    /* ------------------------------ */
+    /*      POSITION + HERO TEXTE     */
+    /* ------------------------------ */
+
+    .description-container {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      z-index: 10;
+      padding: 0 1.5rem;
+    }
+
+    .description-container .title {
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .description-container .subtitle {
+      margin-top: 1rem;
+      font-size: clamp(1rem, 1.6vw, 1.5rem);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .author-container {
+      position: absolute;
+      right: 3vw;
+      bottom: 3vh;
+      text-align: right;
+      z-index: 10;
+
+      .title {
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+      }
+    }
+
+    /* ------------------------------------ */
+    /*         ANIMATION DES LETTRES        */
+    /* ------------------------------------ */
+
+    .description-container .title.word {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.18em;
+      cursor: pointer;
+    }
+
+    .description-container .title.word .char {
+      position: relative;
+      display: inline-block;
+      transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .description-container .title.word .space {
+      width: 0.75em;
+    }
+
+    .description-container .title.word:hover .char:nth-child(odd) {
+      transform: translateY(-0.4rem);
+    }
+
+    .description-container .title.word:hover .char:nth-child(even) {
+      transform: translateY(0.4rem);
+    }
+
+    .mortend {
+      font-family: "Mortend", sans-serif !important;
+    }
+  </style>
 </Layout>

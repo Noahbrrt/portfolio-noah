@@ -1,0 +1,288 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import pb from "../../utils/pb";
+
+const { id } = Astro.params;
+
+// Chargement du projet via son ID
+let record;
+try {
+  record = await pb.collection("projects").getOne(id);
+} catch (err) {
+  return Astro.redirect("/projets");
+}
+
+const cover = record.cover ? pb.files.getUrl(record, record.cover) : null;
+const gallery = record.gallery || [];
+
+const tools = Array.isArray(record.tools)
+  ? record.tools
+  : record.tools
+  ? [record.tools]
+  : [];
+
+// URLs Behance
+const behanceUrl = record.behanceUrl || null;
+const behanceEmbedSrc = record.behanceEmbedSrc || null;
+
+/*  
+  Fonction pour ajouter une légende sur certaines images uniquement,
+  sans JSON, juste via le nom du fichier.
+*/
+function getGalleryCaption(file) {
+  if (record.slug === "affiches-foot") {
+    if (file.includes("neves2_")) {
+      return "Vue d’ensemble du fichier Photoshop : organisation des calques, effets et textures.";
+    }
+    if (file.includes("nunez2_")) {
+      return "Zoom sur l’interface Photoshop pour montrer le travail de détails et de retouches.";
+    }
+  }
+
+  return null; // Pas de légende par défaut
+}
+---
+
+<Layout title={`${record.title} — Noah Barret`}>
+  <main class="relative min-h-screen pt-28 md:pt-32 pb-24 text-white overflow-hidden">
+    
+    {/* Fond discret */}
+    <img
+      src="/wavebar-apropos.svg"
+      alt=""
+      loading="lazy"
+      class="pointer-events-none absolute inset-x-0 top-[-10rem] w-full max-w-none opacity-[0.12] mix-blend-screen z-0"
+    />
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 space-y-16">
+
+      <!-- TITRE + INFO -->
+      <header class="space-y-6">
+        <a
+          href="/projets"
+          class="inline-flex items-center text-xs text-white/60 hover:text-fuchsia-200 gap-2"
+        >
+          ← Retour aux projets
+        </a>
+
+        <div class="grid gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] items-start">
+          
+          <div class="space-y-3">
+            <p class="text-[0.7rem] uppercase tracking-[0.35em] text-fuchsia-300/80">
+              {record.category}
+            </p>
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
+              {record.title}
+            </h1>
+
+            <p class="text-sm md:text-base text-white/75 max-w-2xl leading-relaxed">
+              {record.description}
+            </p>
+          </div>
+
+          <div class="space-y-4 md:text-right text-sm text-white/70">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-white/50">Année</p>
+              <p class="text-base">{record.year}</p>
+            </div>
+
+            {tools.length > 0 && (
+              <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-white/50 mb-1">Outils</p>
+                <div class="flex flex-wrap md:justify-end gap-2">
+                  {tools.map((tool) => (
+                    <span
+                      class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[0.7rem]"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {behanceUrl && (
+              <a
+                href={behanceUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 text-xs md:text-sm text-fuchsia-300 hover:text-fuchsia-100 underline underline-offset-4"
+              >
+                Voir sur Behance ↗
+              </a>
+            )}
+          </div>
+        </div>
+      </header>
+
+
+      <!-- IMAGE PRINCIPALE -->
+      {cover && (
+        <section>
+          <div
+            class="overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-[0_25px_80px_rgba(0,0,0,0.75)] cursor-pointer group"
+            data-lightbox="cover"
+          >
+            <img
+              src={cover}
+              alt={record.title}
+              loading="lazy"
+              class="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+            />
+          </div>
+        </section>
+      )}
+
+      <!-- CONTEXTE -->
+      <section class="grid gap-10 md:grid-cols-[1.4fr_1fr] items-start">
+        <div class="space-y-4">
+          <h2 class="text-xl md:text-2xl font-semibold">Contexte & objectifs.</h2>
+          <p class="text-sm md:text-base text-white/75 leading-relaxed">
+            Ce projet a été pensé pour travailler la narration visuelle autour d’un sujet précis.
+          </p>
+          <p class="text-sm md:text-base text-white/75 leading-relaxed">
+            Sur ce projet, je me suis concentré sur la cohérence globale, l'impact du premier écran
+            et la lisibilité du message principal.
+          </p>
+        </div>
+
+        <div class="space-y-4 text-sm text-white/70">
+          <h3 class="text-xs uppercase tracking-[0.3em] text-white/50">Rôle & livrables</h3>
+          <ul class="space-y-2 list-disc list-inside marker:text-fuchsia-300/90">
+            <li>Direction artistique</li>
+            <li>Création des visuels finaux</li>
+            <li>Déclinaison web (portfolio / Behance)</li>
+          </ul>
+        </div>
+      </section>
+
+
+      <!-- BEHANCE -->
+      {(behanceEmbedSrc || record.slug === "onremplittonfrigo") && (
+        <section class="space-y-4">
+          <h2 class="text-xl md:text-2xl font-semibold">Étude de cas Behance.</h2>
+
+          <div
+            class="relative w-full overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-[0_25px_80px_rgba(0,0,0,0.75)] flex items-center justify-center p-4 md:p-6"
+          >
+            {record.slug === "onremplittonfrigo" ? (
+              <iframe
+                src="https://www.behance.net/embed/project/227441849?ilo0=1"
+                height="316"
+                width="404"
+                allowfullscreen
+                loading="lazy"
+                frameborder="0"
+                allow="clipboard-write"
+                class="border-none"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            ) : (
+              <div class="relative w-full pb-[56.25%]">
+                <iframe
+                  src={behanceEmbedSrc}
+                  frameborder="0"
+                  allowfullscreen
+                  loading="lazy"
+                  class="absolute inset-0 h-full w-full"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+
+      <!-- GALERIE -->
+      {gallery.length > 0 && (
+        <section class="space-y-6">
+          <h2 class="text-xl md:text-2xl font-semibold">Quelques visuels du projet.</h2>
+
+          <div class="grid gap-4 md:gap-6 md:grid-cols-2">
+            {gallery.map((file) => {
+              const caption = getGalleryCaption(file);
+
+              return (
+                <div
+                  class="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 cursor-pointer group"
+                  data-lightbox={file}
+                >
+                  <img
+                    src={pb.files.getUrl(record, file)}
+                    alt={caption || ""}
+                    loading="lazy"
+                    class="w-full h-full max-h-[420px] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+
+                  {caption && (
+                    <div
+                      class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4"
+                    >
+                      <p class="text-sm md:text-base text-white/90 text-center">{caption}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+    </div>
+  </main>
+</Layout>
+
+
+
+
+
+<!-- Lightbox + animations -->
+<style>
+  .lightbox-overlay {
+    animation: fadeIn 0.3s ease-out;
+  }
+  .lightbox-image {
+    animation: zoomIn 0.3s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
+<script is:inline>
+  function initLightbox() {
+    const images = document.querySelectorAll("[data-lightbox]");
+
+    images.forEach((el) => {
+      el.addEventListener("click", () => {
+        const img = el.querySelector("img");
+        if (!img) return;
+
+        const overlay = document.createElement("div");
+        overlay.className =
+          "lightbox-overlay fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4";
+
+        const lightboxImg = document.createElement("img");
+        lightboxImg.src = img.src;
+        lightboxImg.className = "lightbox-image max-w-full max-h-[90vh] object-contain rounded-xl";
+
+        overlay.appendChild(lightboxImg);
+
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) overlay.remove();
+        });
+
+        document.body.appendChild(overlay);
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initLightbox);
+</script>

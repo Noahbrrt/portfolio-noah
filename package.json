@@ -9,6 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.6"
+    "@astrojs/node": "^9.5.1",
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.15.6",
+    "pocketbase": "^0.26.3",
+    "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "sass": "^1.94.0"
   }
 }

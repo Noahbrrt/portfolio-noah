@@ -1,0 +1,269 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="À propos — Noah Barret">
+  <main
+    class="relative min-h-screen pt-32 pb-24 text-white overflow-hidden"
+  >
+    {/* Vague décorative en haut (À propos) */}
+    <img
+      src="/wavebar.svg"
+      alt=""
+      loading="lazy"
+      class="pointer-events-none absolute inset-x-0 top-[-10rem] w-full max-w-none opacity-[0.12] mix-blend-screen z-0"
+    />
+
+    {/* Montagne décorative en bas */}
+    <img
+      src="/montagne.svg"
+      alt=""
+      loading="lazy"
+      class="pointer-events-none absolute inset-x-0 bottom-0 w-full max-w-none opacity-[0.18] mix-blend-screen z-0"
+    />
+
+    {/* CONTENU */}
+    <div class="relative z-10 max-w-6xl mx-auto px-6 space-y-20">
+      {/* ========================= */}
+      {/*   BLOC 1 : PRÉSENTATION   */}
+      {/* ========================= */}
+      <section
+        class="grid gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-center"
+      >
+        {/* Colonne texte */}
+        <div class="space-y-6">
+
+          <div class="space-y-3">
+            <h1
+              class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight"
+            >
+              Salut, moi c’est Noah.
+            </h1>
+            <p class="text-sm md:text-base text-white/75 max-w-xl leading-relaxed">
+              Passionné par la communication digitale et l’univers du football,
+              je réalise des contenus engageants en rapport avec ma passion. Mon
+              objectif est de valoriser une identité et de créer une proximité
+              avec les supporters à travers des visuels. Je me forme
+              actuellement à la création graphique, à la communication et aux
+              stratégies digitales, afin d’acquérir une approche complète et
+              polyvalente pour vos futurs projets de communication sportive.
+            </p>
+          </div>
+
+          <div class="space-y-3 text-sm text-white/75 max-w-xl">
+            <p>
+              Aujourd’hui, je travaille sur des projets de communication web,
+              d’identité visuelle et de contenus digitaux. J’alterne entre
+              création graphique, mise en page, motion léger et intégration web.
+            </p>
+            <p>
+              Tu peux aussi me contacter directement à&nbsp;
+              <a
+                href="mailto:noah.barret@hotmail.com"
+                class="text-fuchsia-300 hover:text-fuchsia-200 underline underline-offset-4"
+              >
+                noah.barret@hotmail.com
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+
+        {/* Colonne carte FUT */}
+        <div class="flex justify-center md:justify-end">
+          <img
+            src="/fut.webp"
+            alt="Carte FUT personnalisée représentant Noah Barret"
+            class="block w-full max-w-xs h-auto drop-shadow-[0_0_40px_rgba(236,72,153,0.55)]"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/*   BLOC 2 : COMPÉTENCES    */}
+      {/* ========================= */}
+      <section class="space-y-8">
+        <div class="space-y-2">
+          <p
+            class="text-[0.7rem] uppercase tracking-[0.35em] text-fuchsia-300/80"
+          >
+            Compétences
+          </p>
+          <h2 class="text-xl md:text-2xl font-semibold">
+            Ce que je sais faire.
+          </h2>
+        </div>
+
+        <div class="grid gap-10 md:grid-cols-2 text-sm text-white/80">
+          {/* Colonne gauche */}
+          <div class="space-y-6">
+            <div class="flex gap-3">
+              <span class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400"></span>
+              <div>
+                <p class="font-medium">Design produit & visuel</p>
+                <p class="text-xs text-white/60">
+                  Conception d’assets graphiques cohérents et orientés
+                  utilisateur.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <span
+                class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400/80"
+              ></span>
+              <div>
+                <p class="font-medium">Design graphique</p>
+                <p class="text-xs text-white/60">
+                  Affiches, contenus digitaux, visuels pour clubs &
+                  entreprises.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <span
+                class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400/60"
+              ></span>
+              <div>
+                <p class="font-medium">Branding & identité visuelle</p>
+                <p class="text-xs text-white/60">
+                  Création d’univers graphiques et lignes visuelles complètes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Colonne droite */}
+          <div class="space-y-6">
+            <div class="flex gap-3">
+              <span class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400"></span>
+              <div>
+                <p class="font-medium">Stratégie digitale</p>
+                <p class="text-xs text-white/60">
+                  Cohérence de marque, lignes éditoriales & contenus orientés
+                  audience.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <span
+                class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400/80"
+              ></span>
+              <div>
+                <p class="font-medium">Audiovisuel & montage vidéo</p>
+                <p class="text-xs text-white/60">
+                  Vidéos promotionnelles, sportives ou éditoriales.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <span
+                class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400/60"
+              ></span>
+              <div>
+                <p class="font-medium">Développement web</p>
+                <p class="text-xs text-white/60">
+                  HTML, CSS, Tailwind, intégration moderne (Astro).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/*   BLOC 3 : OUTILS         */}
+      {/* ========================= */}
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <p
+            class="text-[0.7rem] uppercase tracking-[0.35em] text-fuchsia-300/80"
+          >
+            Outils
+          </p>
+          <h2 class="text-xl md:text-2xl font-semibold">
+            Les outils que j'ai appris à maitriser au cours de mon parcours.
+          </h2>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-3 text-sm">
+          {/* Design & UI */}
+          <div class="space-y-3">
+            <h3 class="text-xs uppercase tracking-[0.25em] text-white/60">
+              Design & UI
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                Figma
+              </span>
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                Adobe Photoshop
+              </span>
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                Adobe Illustrator
+              </span>
+            </div>
+          </div>
+
+          {/* Audiovisuel & contenu */}
+          <div class="space-y-3">
+            <h3 class="text-xs uppercase tracking-[0.25em] text-white/60">
+              Audiovisuel & contenu
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                Adobe Premiere Pro
+              </span>
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                Capcut
+              </span>
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                Canva
+              </span>
+            </div>
+          </div>
+
+          {/* Web & intégration */}
+          <div class="space-y-3">
+            <h3 class="text-xs uppercase tracking-[0.25em] text-white/60">
+              Web & intégration
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                HTML / CSS
+              </span>
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                Tailwind CSS
+              </span>
+              <span
+                class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/85"
+              >
+                Astro
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
