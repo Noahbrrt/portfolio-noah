@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+backend/pb_data/
+backend/pb_migrations/
+*.db
+*.db-shm
+*.db-wal

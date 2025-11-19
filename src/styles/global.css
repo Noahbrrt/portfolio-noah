@@ -75,3 +75,42 @@ h2 {
 .arrow-button--left {
   transform: scaleX(-1);
 }
+
+@media (max-width: 768px) {
+  .arrow-button {
+    width: 44px;
+    gap: 3px;
+  }
+
+  .arrow-line {
+    gap: 3px;
+  }
+
+  /* Plus petits ronds sur mobile */
+  .arrow-round {
+    width: 4px;
+    height: 4px;
+    box-shadow: 0 0 4px rgba(232, 121, 249, 0.6);
+  }
+
+  /* Ajuster les translations pour conserver la forme de la flèche */
+  .arrow-line.two {
+    transform: translateX(6px);
+  }
+
+  .arrow-line.three {
+    transform: translateX(10px);
+  }
+
+  .arrow-line.four {
+    transform: translateX(14px);
+  }
+
+  .arrow-line.five {
+    transform: translateX(10px);
+  }
+
+  .arrow-line.six {
+    transform: translateX(6px);
+  }
+}

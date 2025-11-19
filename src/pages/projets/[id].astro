@@ -25,6 +25,36 @@ const tools = Array.isArray(record.tools)
 const behanceUrl = record.behanceUrl || null;
 const behanceEmbedSrc = record.behanceEmbedSrc || null;
 
+// Texts personnalisés par projet (slug)
+const projectTexts = {
+  hacksterix: {
+    header:
+      "Hacksterix — Maquette et prototype interactif pour une campagne de prévention numérique.",
+    context: [
+      "Hacksterix est un projet collaboratif visant à sensibiliser aux bonnes pratiques en cybersécurité, via des supports visuels et un prototype interactif.",
+      "Mon rôle : direction artistique, création d’un univers graphique fort et intégration front-end pour la démonstration du prototype."
+    ],
+  },
+  onremplittonfrigo: {
+    header:
+      "On Remplit Ton Frigo — Refonte web et identité visuelle pour un projet local solidaire.",
+    context: [
+      "Refonte axée sur l’accès rapide aux informations et la mise en valeur d’initiatives locales pour réduire le gaspillage alimentaire.",
+      "Travail sur l’ergonomie, les modules de donation et la hiérarchisation des contenus pour faciliter l’engagement des visiteurs."
+    ],
+  },
+  "affiches-foot": {
+    header: "Série d’affiches — Mise en valeur de joueurs par un traitement visuel impactant.",
+    context: [
+      "Projet centré sur l’affichage et la promotion d’événements sportifs, avec une attention particulière portée au travail typographique.",
+      "Objectifs : produire des visuels adaptables au print et au digital, garder une forte lisibilité et un style reconnaissable."
+    ],
+  },
+};
+
+// Récupère les textes pour le projet courant (fallback si absent)
+const customText = projectTexts[record.slug] || null;
+
 /*  
   Fonction pour ajouter une légende sur certaines images uniquement,
   sans JSON, juste via le nom du fichier.
@@ -46,7 +76,7 @@ function getGalleryCaption(file) {
 <Layout title={`${record.title} — Noah Barret`}>
   <main class="relative min-h-screen pt-28 md:pt-32 pb-24 text-white overflow-hidden">
     
-    {/* Fond discret */}
+    
     <img
       src="/wavebar-apropos.svg"
       alt=""
@@ -56,7 +86,7 @@ function getGalleryCaption(file) {
 
     <div class="relative z-10 max-w-6xl mx-auto px-6 space-y-16">
 
-      <!-- TITRE + INFO -->
+      
       <header class="space-y-6">
         <a
           href="/projets"
@@ -65,7 +95,7 @@ function getGalleryCaption(file) {
           ← Retour aux projets
         </a>
 
-        <div class="grid gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] items-start">
+        <div class="grid gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] items-start">
           
           <div class="space-y-3">
             <p class="text-[0.7rem] uppercase tracking-[0.35em] text-fuchsia-300/80">
@@ -76,8 +106,8 @@ function getGalleryCaption(file) {
               {record.title}
             </h1>
 
-            <p class="text-sm md:text-base text-white/75 max-w-2xl leading-relaxed">
-              {record.description}
+            <p class="text-xs sm:text-sm md:text-base text-white/75 max-w-2xl leading-relaxed">
+              {customText ? customText.header : record.description}
             </p>
           </div>
 
@@ -117,7 +147,7 @@ function getGalleryCaption(file) {
       </header>
 
 
-      <!-- IMAGE PRINCIPALE -->
+      
       {cover && (
         <section>
           <div
@@ -128,37 +158,42 @@ function getGalleryCaption(file) {
               src={cover}
               alt={record.title}
               loading="lazy"
-              class="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+              class={
+                record.slug === "affiches-foot"
+                  ? "w-full h-auto max-h-[420px] object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                  : "w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+              }
             />
           </div>
         </section>
       )}
 
-      <!-- CONTEXTE -->
-      <section class="grid gap-10 md:grid-cols-[1.4fr_1fr] items-start">
+      
+      <section class="grid gap-8 md:grid-cols-[1.4fr_1fr] items-start">
         <div class="space-y-4">
           <h2 class="text-xl md:text-2xl font-semibold">Contexte & objectifs.</h2>
-          <p class="text-sm md:text-base text-white/75 leading-relaxed">
-            Ce projet a été pensé pour travailler la narration visuelle autour d’un sujet précis.
-          </p>
-          <p class="text-sm md:text-base text-white/75 leading-relaxed">
-            Sur ce projet, je me suis concentré sur la cohérence globale, l'impact du premier écran
-            et la lisibilité du message principal.
-          </p>
+          {customText ? (
+            customText.context.map((p) => (
+              <p class="text-sm md:text-base text-white/75 leading-relaxed">{p}</p>
+            ))
+          ) : (
+            <>
+              <p class="text-sm md:text-base text-white/75 leading-relaxed">
+                Ce projet a été pensé pour travailler la narration visuelle autour d’un sujet précis.
+              </p>
+              <p class="text-sm md:text-base text-white/75 leading-relaxed">
+                Sur ce projet, je me suis concentré sur la cohérence globale, l'impact du premier écran
+                et la lisibilité du message principal.
+              </p>
+            </>
+          )}
         </div>
 
-        <div class="space-y-4 text-sm text-white/70">
-          <h3 class="text-xs uppercase tracking-[0.3em] text-white/50">Rôle & livrables</h3>
-          <ul class="space-y-2 list-disc list-inside marker:text-fuchsia-300/90">
-            <li>Direction artistique</li>
-            <li>Création des visuels finaux</li>
-            <li>Déclinaison web (portfolio / Behance)</li>
-          </ul>
-        </div>
+        
       </section>
 
 
-      <!-- BEHANCE -->
+      
       {(behanceEmbedSrc || record.slug === "onremplittonfrigo") && (
         <section class="space-y-4">
           <h2 class="text-xl md:text-2xl font-semibold">Étude de cas Behance.</h2>
@@ -195,35 +230,56 @@ function getGalleryCaption(file) {
       )}
 
 
-      <!-- GALERIE -->
+      
       {gallery.length > 0 && (
         <section class="space-y-6">
           <h2 class="text-xl md:text-2xl font-semibold">Quelques visuels du projet.</h2>
 
-          <div class="grid gap-4 md:gap-6 md:grid-cols-2">
+          <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
             {gallery.map((file) => {
               const caption = getGalleryCaption(file);
 
               return (
-                <div
-                  class="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 cursor-pointer group"
-                  data-lightbox={file}
-                >
-                  <img
-                    src={pb.files.getUrl(record, file)}
-                    alt={caption || ""}
-                    loading="lazy"
-                    class="w-full h-full max-h-[420px] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                  />
+                <>
+                  <div
+                    class="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 cursor-pointer group"
+                    data-lightbox={file}
+                  >
+                    <img
+                      src={pb.files.getUrl(record, file)}
+                      alt={caption || ""}
+                      loading="lazy"
+                      class="w-full h-full max-h-[420px] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
 
-                  {caption && (
+                  
+                    {caption && (
+                      <div
+                        class="absolute inset-0 bg-black/70 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 pointer-events-none hidden md:flex"
+                      >
+                        <p class="text-base text-white/90 text-center">{caption}</p>
+                      </div>
+                    )}
+
+                  
                     <div
-                      class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4"
+                      class="absolute bottom-3 right-3 bg-black/60 text-xs text-white/90 px-2 py-1 rounded-full flex items-center gap-2 opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"
+                      aria-hidden="true"
                     >
-                      <p class="text-sm md:text-base text-white/90 text-center">{caption}</p>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      </svg>
+                      <span>Cliquer</span>
+                    </div>
+                  </div>
+                  
+                  {caption && (
+                    <div class="block md:hidden mt-3 px-2">
+                      <p class="text-sm text-white/80 text-center bg-black/60 rounded-lg py-2">{caption}</p>
                     </div>
                   )}
-                </div>
+                </>
               );
             })}
           </div>
@@ -238,7 +294,7 @@ function getGalleryCaption(file) {
 
 
 
-<!-- Lightbox + animations -->
+ 
 <style>
   .lightbox-overlay {
     animation: fadeIn 0.3s ease-out;

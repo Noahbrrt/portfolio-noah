@@ -4,9 +4,8 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="À propos — Noah Barret">
   <main
-    class="relative min-h-screen pt-32 pb-24 text-white overflow-hidden"
+    class="relative min-h-screen pt-20 md:pt-32 pb-16 md:pb-24 text-white overflow-hidden"
   >
-    {/* Vague décorative en haut (À propos) */}
     <img
       src="/wavebar.svg"
       alt=""
@@ -14,7 +13,6 @@ import Layout from "../layouts/Layout.astro";
       class="pointer-events-none absolute inset-x-0 top-[-10rem] w-full max-w-none opacity-[0.12] mix-blend-screen z-0"
     />
 
-    {/* Montagne décorative en bas */}
     <img
       src="/montagne.svg"
       alt=""
@@ -22,24 +20,19 @@ import Layout from "../layouts/Layout.astro";
       class="pointer-events-none absolute inset-x-0 bottom-0 w-full max-w-none opacity-[0.18] mix-blend-screen z-0"
     />
 
-    {/* CONTENU */}
-    <div class="relative z-10 max-w-6xl mx-auto px-6 space-y-20">
-      {/* ========================= */}
-      {/*   BLOC 1 : PRÉSENTATION   */}
-      {/* ========================= */}
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 space-y-12 md:space-y-20">
       <section
-        class="grid gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-center"
+        class="grid gap-8 md:gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-center"
       >
-        {/* Colonne texte */}
         <div class="space-y-6">
 
           <div class="space-y-3">
             <h1
-              class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight"
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight"
             >
               Salut, moi c’est Noah.
             </h1>
-            <p class="text-sm md:text-base text-white/75 max-w-xl leading-relaxed">
+            <p class="text-xs sm:text-sm md:text-base text-white/75 max-w-xl leading-relaxed">
               Passionné par la communication digitale et l’univers du football,
               je réalise des contenus engageants en rapport avec ma passion. Mon
               objectif est de valoriser une identité et de créer une proximité
@@ -50,7 +43,7 @@ import Layout from "../layouts/Layout.astro";
             </p>
           </div>
 
-          <div class="space-y-3 text-sm text-white/75 max-w-xl">
+          <div class="space-y-3 text-xs sm:text-sm text-white/75 max-w-xl">
             <p>
               Aujourd’hui, je travaille sur quelques projets personnels de communication web,
               d’identité visuelle et de contenus digitaux.
@@ -68,7 +61,6 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </div>
 
-        {/* Colonne carte FUT */}
         <div class="flex justify-center md:justify-end">
           <img
             src="/fut.webp"
@@ -79,9 +71,6 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </section>
 
-      {/* ========================= */}
-      {/*   BLOC 2 : COMPÉTENCES    */}
-      {/* ========================= */}
       <section class="space-y-8">
         <div class="space-y-2">
           <p
@@ -94,8 +83,7 @@ import Layout from "../layouts/Layout.astro";
           </h2>
         </div>
 
-        <div class="grid gap-10 md:grid-cols-2 text-sm text-white/80">
-          {/* Colonne gauche */}
+        <div class="grid gap-10 md:grid-cols-2 text-xs sm:text-sm text-white/80">
           <div class="space-y-6">
             <div class="flex gap-3">
               <span class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400"></span>
@@ -133,7 +121,6 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </div>
 
-          {/* Colonne droite */}
           <div class="space-y-6">
             <div class="flex gap-3">
               <span class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400"></span>
@@ -172,9 +159,6 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </section>
 
-      {/* ========================= */}
-      {/*   BLOC 3 : OUTILS         */}
-      {/* ========================= */}
       <section class="space-y-6">
         <div class="space-y-2">
           <p
@@ -187,8 +171,7 @@ import Layout from "../layouts/Layout.astro";
           </h2>
         </div>
 
-        <div class="grid gap-8 md:grid-cols-3 text-sm">
-          {/* Design & UI */}
+        <div class="grid gap-6 md:gap-8 md:grid-cols-3 text-xs sm:text-sm">
           <div class="space-y-3">
             <h3 class="text-xs uppercase tracking-[0.25em] text-white/60">
               Design & UI
@@ -212,7 +195,6 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </div>
 
-          {/* Audiovisuel & contenu */}
           <div class="space-y-3">
             <h3 class="text-xs uppercase tracking-[0.25em] text-white/60">
               Audiovisuel & contenu
@@ -236,7 +218,6 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </div>
 
-          {/* Web & intégration */}
           <div class="space-y-3">
             <h3 class="text-xs uppercase tracking-[0.25em] text-white/60">
               Web & intégration

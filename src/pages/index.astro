@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
   <main
     id="hero-bg"
-    class="relative flex flex-col items-center justify-center min-h-screen pt-24 overflow-hidden"
+    class="relative flex flex-col items-center justify-center min-h-screen pt-16 md:pt-24 overflow-hidden"
   >
     <section class="description-container">
       <h1 class="title word mortend">
@@ -44,12 +44,8 @@ import Layout from "../layouts/Layout.astro";
       background: $bg;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      overflow: hidden; /* Empêche le scrolling sur la page d'accueil */
+      overflow: hidden;
     }
-
-    /* ------------------------------ */
-    /*      POSITION + HERO TEXTE     */
-    /* ------------------------------ */
 
     .description-container {
       position: absolute;
@@ -62,47 +58,46 @@ import Layout from "../layouts/Layout.astro";
       letter-spacing: 0.25em;
       text-transform: uppercase;
       z-index: 10;
-      padding: 0 1.5rem;
+      padding: 0 0.75rem;
     }
 
     .description-container .title {
-      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-size: clamp(1.5rem, 4vw, 6rem);
       font-weight: 700;
       color: #ffffff;
+      line-height: 1.1;
     }
 
     .description-container .subtitle {
-      margin-top: 1rem;
-      font-size: clamp(1rem, 1.6vw, 1.5rem);
+      margin-top: 0.25rem;
+      font-size: clamp(0.65rem, 1vw, 1.5rem);
       font-weight: 500;
       color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.1em;
     }
 
     .author-container {
       position: absolute;
-      right: 3vw;
-      bottom: 3vh;
+      right: 0.75rem;
+      bottom: 1.5rem;
       text-align: right;
       z-index: 10;
 
       .title {
-        font-size: 1rem;
+        font-size: clamp(0.65rem, 1.5vw, 1rem);
         letter-spacing: 0.2em;
         color: rgba(255, 255, 255, 0.6);
         text-transform: uppercase;
       }
     }
 
-    /* ------------------------------------ */
-    /*         ANIMATION DES LETTRES        */
-    /* ------------------------------------ */
-
     .description-container .title.word {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.18em;
+      gap: clamp(0.08em, 2vw, 0.18em);
       cursor: pointer;
+      flex-wrap: wrap;
     }
 
     .description-container .title.word .char {

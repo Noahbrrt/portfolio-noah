@@ -27,7 +27,6 @@ const isHome = Astro.url.pathname === "/";
     )}
 
     <style>
-      /* Fallback si Tailwind plante */
       .layout-header {
         position: fixed !important;
         top: 0 !important;
@@ -37,14 +36,91 @@ const isHome = Astro.url.pathname === "/";
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        padding: 1rem 2.5rem !important;
+        padding: 1rem 1.5rem !important;
       }
       .layout-header a {
         color: inherit;
         text-decoration: none;
       }
 
-      /* --- WAVE ANIMEE DU FOOTER --- */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+      }
+      .menu-toggle .hamburger {
+        display: block;
+      }
+      .menu-toggle.active .hamburger {
+        display: none;
+      }
+      .menu-toggle .close-x {
+        display: none;
+      }
+      .menu-toggle.active .close-x {
+        display: block;
+        width: 24px;
+        height: 24px;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(23, 0, 64, 0.95);
+        backdrop-filter: blur(lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        z-index: 99999;
+        animation: slideDown 0.3s ease;
+      }
+
+      .mobile-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        padding: 1rem 1.5rem;
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .mobile-menu a:hover {
+        color: #ec4899;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+        .desktop-nav {
+          display: none;
+        }
+      }
+
       .footer-wave {
         position: absolute;
         inset: 0;
@@ -96,18 +172,18 @@ const isHome = Astro.url.pathname === "/";
   </head>
 
   <body class="min-h-screen flex flex-col font-sans">
-    {/* HEADER */}
     <header
-      class={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-10 py-4 layout-header ${
+      class={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 md:px-10 py-4 layout-header ${
         isHome
           ? "bg-transparent"
           : "bg-[#170040]/70 backdrop-blur-lg border-b border-white/10"
       }`}
     >
-      <a href="/" class="font-light tracking-widest text-xl md:text-2xl">
+      <a href="/" class="font-light tracking-widest text-lg md:text-2xl">
         Noah Barret
       </a>
-      <nav class="flex gap-10 text-lg md:text-xl font-light">
+      
+      <nav class="hidden md:flex gap-10 text-lg md:text-xl font-light desktop-nav">
         <a href="/apropos" class="hover:text-fuchsia-300 transition-colors">
           A propos
         </a>
@@ -118,16 +194,31 @@ const isHome = Astro.url.pathname === "/";
           Contact
         </a>
       </nav>
+
+      <button class="menu-toggle md:hidden" id="menu-toggle" aria-label="Menu">
+        <svg class="hamburger" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="7" x2="21" y2="7" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="17" x2="21" y2="17" />
+        </svg>
+        <svg class="close-x" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
     </header>
 
-    {/* CONTENU */}
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="/apropos" class="text-lg font-light">A propos</a>
+      <a href="/projets" class="text-lg font-light">Projets</a>
+      <a href="/contact" class="text-lg font-light">Contact</a>
+    </nav>
+
     <main id="top" class="flex-1">
       <slot />
     </main>
 
-    {/* FOOTER */}
     {isHome ? (
-      /* Footer ultra léger pour la home */
       <footer class="fixed bottom-0 left-0 w-full z-40 pointer-events-none">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-center gap-6 text-sm md:text-base text-white/90 pointer-events-auto">
           <a href="https://www.linkedin.com/in/noah-barret-a33836337" target="_blank" class="hover:text-fuchsia-300 transition-colors text-lg md:text-xl font-medium px-3 py-2">LinkedIn</a>
@@ -135,25 +226,19 @@ const isHome = Astro.url.pathname === "/";
         </div>
       </footer>
     ) : (
-      /* Footer pages internes */
       <footer class="relative overflow-hidden">
 
-        {/* Dégradé doux qui remonte sur le contenu */}
         <div class="absolute -top-10 left-0 w-full h-24 bg-gradient-to-b from-[#170040] to-transparent z-20 pointer-events-none"></div>
 
-        {/* Fine séparation lumineuse */}
         <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-fuchsia-400/40 to-transparent blur-[2px] z-40 pointer-events-none"></div>
 
-        {/* Vague animée */}
         <div class="footer-wave z-0">
           <span></span>
           <span></span>
           <span></span>
         </div>
 
-        {/* Contenu du footer */}
         <div class="max-w-5xl mx-auto px-30 py-20 grid gap-15 md:grid-cols-3 text-xs text-white/70 relative z-50">
-          {/* Colonne navigation */}
           <div class="space-y-2">
             <h2 class="uppercase tracking-[0.3em] text-white/60 text-[0.7rem]">
               Pages
@@ -183,7 +268,6 @@ const isHome = Astro.url.pathname === "/";
             </nav>
           </div>  
 
-          {/* Colonne réseaux */}
           <div class="space-y-2">
             <h2 class="uppercase tracking-[0.3em] text-white/60 text-[0.7rem]">
               Reseaux
@@ -195,14 +279,13 @@ const isHome = Astro.url.pathname === "/";
 				</a>
               </li>
               <li>
-                <a href="#" class="hover:text-fuchsia-300 transition-colors">
+                <a href="https://www.behance.net/noahbarret" target="_blank" class="hover:text-fuchsia-300 transition-colors">
                   Behance
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Colonne informations */}
           <div class="space-y-2">
             <h2 class="uppercase tracking-[0.3em] text-white/60 text-[0.7rem]">
               Informations
@@ -216,7 +299,6 @@ const isHome = Astro.url.pathname === "/";
       </footer>
     )}
 
-    {/* Script Vanta (home uniquement) */}
     {isHome && (
       <script is:inline>
         document.addEventListener("DOMContentLoaded", function () {
@@ -243,5 +325,35 @@ const isHome = Astro.url.pathname === "/";
         });
       </script>
     )}
+
+    <script is:inline>
+      // Menu hamburger (fonctionne sur toutes les pages)
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          menuToggle.classList.toggle("active");
+          mobileMenu.classList.toggle("active");
+        });
+
+        // Fermer le menu au clic sur un lien
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menuToggle.classList.remove("active");
+            mobileMenu.classList.remove("active");
+          });
+        });
+
+        // Fermer le menu si on clique dehors
+        document.addEventListener("click", (e) => {
+          if (!mobileMenu.classList.contains("active")) return;
+          if (e.target === mobileMenu || mobileMenu.contains(e.target) || e.target === menuToggle) return;
+          menuToggle.classList.remove("active");
+          mobileMenu.classList.remove("active");
+        });
+      }
+    </script>
   </body>
 </html>
