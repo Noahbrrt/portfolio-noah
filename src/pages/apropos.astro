@@ -21,9 +21,7 @@ import Layout from "../layouts/Layout.astro";
     />
 
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 space-y-12 md:space-y-20">
-      <section
-        class="grid gap-8 md:gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-center"
-      >
+      <section class="grid gap-8 md:gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-center reveal">
         <div class="space-y-6">
 
           <div class="space-y-3">
@@ -71,7 +69,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </section>
 
-      <section class="space-y-8">
+      <section class="space-y-8 reveal">
         <div class="space-y-2">
           <p
             class="text-[0.7rem] uppercase tracking-[0.35em] text-fuchsia-300/80"
@@ -83,83 +81,45 @@ import Layout from "../layouts/Layout.astro";
           </h2>
         </div>
 
-        <div class="grid gap-10 md:grid-cols-2 text-xs sm:text-sm text-white/80">
+        <div class="grid gap-8 md:grid-cols-2">
           <div class="space-y-6">
-            <div class="flex gap-3">
-              <span class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400"></span>
-              <div>
-                <p class="font-medium">Design produit & visuel</p>
-                <p class="text-xs text-white/60">
-                  Conception d’assets graphiques cohérents et orientés
-                  utilisateur.
-                </p>
-              </div>
+            <div class="card-skill">
+              <span class="h-[3px] w-8 rounded-full bg-fuchsia-400 block mb-2"></span>
+              <p class="font-medium text-lg">Design produit & visuel</p>
+              <p class="text-xs text-white/60">Conception d’assets graphiques cohérents et orientés utilisateur.</p>
             </div>
-
-            <div class="flex gap-3">
-              <span
-                class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400/80"
-              ></span>
-              <div>
-                <p class="font-medium">Design graphique</p>
-                <p class="text-xs text-white/60">
-                  Affiches, contenus digitaux, visuels.
-                </p>
-              </div>
+            <div class="card-skill">
+              <span class="h-[3px] w-8 rounded-full bg-fuchsia-400/80 block mb-2"></span>
+              <p class="font-medium text-lg">Design graphique</p>
+              <p class="text-xs text-white/60">Affiches, contenus digitaux, visuels.</p>
             </div>
-
-            <div class="flex gap-3">
-              <span
-                class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400/60"
-              ></span>
-              <div>
-                <p class="font-medium">Branding & identité visuelle</p>
-                <p class="text-xs text-white/60">
-                  Création d’univers graphiques.
-                </p>
-              </div>
+            <div class="card-skill">
+              <span class="h-[3px] w-8 rounded-full bg-fuchsia-400/60 block mb-2"></span>
+              <p class="font-medium text-lg">Branding & identité visuelle</p>
+              <p class="text-xs text-white/60">Création d’univers graphiques.</p>
             </div>
           </div>
-
           <div class="space-y-6">
-            <div class="flex gap-3">
-              <span class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400"></span>
-              <div>
-                <p class="font-medium">Stratégie digitale</p>
-                <p class="text-xs text-white/60">
-                  Cohérence de marque, lignes éditoriales & contenus orientés.
-                </p>
-              </div>
+            <div class="card-skill">
+              <span class="h-[3px] w-8 rounded-full bg-fuchsia-400 block mb-2"></span>
+              <p class="font-medium text-lg">Stratégie digitale</p>
+              <p class="text-xs text-white/60">Cohérence de marque, lignes éditoriales & contenus orientés.</p>
             </div>
-
-            <div class="flex gap-3">
-              <span
-                class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400/80"
-              ></span>
-              <div>
-                <p class="font-medium">Audiovisuel & montage vidéo</p>
-                <p class="text-xs text-white/60">
-                  Vidéos promotionnelles, sportives ou éditoriales.
-                </p>
-              </div>
+            <div class="card-skill">
+              <span class="h-[3px] w-8 rounded-full bg-fuchsia-400/80 block mb-2"></span>
+              <p class="font-medium text-lg">Audiovisuel & montage vidéo</p>
+              <p class="text-xs text-white/60">Vidéos promotionnelles, sportives ou éditoriales.</p>
             </div>
-
-            <div class="flex gap-3">
-              <span
-                class="mt-2 h-[3px] w-8 rounded-full bg-fuchsia-400/60"
-              ></span>
-              <div>
-                <p class="font-medium">Développement web</p>
-                <p class="text-xs text-white/60">
-                  HTML, CSS, Tailwind, intégration moderne (Astro).
-                </p>
-              </div>
+            <div class="card-skill">
+              <span class="h-[3px] w-8 rounded-full bg-fuchsia-400/60 block mb-2"></span>
+              <p class="font-medium text-lg">Développement web</p>
+              <p class="text-xs text-white/60">HTML, CSS, Tailwind, intégration moderne (Astro).</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="space-y-6">
+      <section class="space-y-6 reveal">
         <div class="space-y-2">
           <p
             class="text-[0.7rem] uppercase tracking-[0.35em] text-fuchsia-300/80"
@@ -244,4 +204,44 @@ import Layout from "../layouts/Layout.astro";
       </section>
     </div>
   </main>
+
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .card-skill {
+      background: rgba(23,0,64,0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.2rem;
+      box-shadow: 0 6px 32px 0 rgba(236,72,153,0.08);
+      padding: 1.2rem 1.3rem;
+      transition: box-shadow .3s, transform .3s;
+      will-change: transform;
+    }
+    .card-skill:hover {
+      box-shadow: 0 12px 40px 0 rgba(236,72,153,0.18);
+      transform: translateY(-4px) scale(1.03);
+    }
+  </style>
+  <script is:inline>
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      for (const el of reveals) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          el.classList.add('visible');
+        } else {
+          el.classList.remove('visible');
+        }
+      }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    document.addEventListener('DOMContentLoaded', revealOnScroll);
+  </script>
 </Layout>
