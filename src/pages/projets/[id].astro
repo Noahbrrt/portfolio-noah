@@ -4,7 +4,6 @@ import pb from "../../utils/pb";
 
 const { id } = Astro.params;
 
-// Chargement du projet via son ID
 let record;
 try {
   record = await pb.collection("projects").getOne(id);
@@ -21,18 +20,16 @@ const tools = Array.isArray(record.tools)
   ? [record.tools]
   : [];
 
-// URLs Behance
 const behanceUrl = record.behanceUrl || null;
 const behanceEmbedSrc = record.behanceEmbedSrc || null;
 
-// Texts personnalisés par projet (slug)
 const projectTexts = {
   hacksterix: {
     header:
       "Hacksterix — Maquette et prototype interactif pour une campagne de prévention numérique.",
     context: [
       "Hacksterix est un projet collaboratif visant à sensibiliser aux bonnes pratiques en cybersécurité, via des supports visuels et un prototype interactif.",
-      "Mon rôle : direction artistique, création d’un univers graphique fort et intégration front-end pour la démonstration du prototype."
+      "Mon rôle : aide à la réalisation de la maquette, création d’un univers graphique, réalisation d'un questionnaire post projet pour le ciblage"
     ],
   },
   onremplittonfrigo: {
@@ -46,19 +43,14 @@ const projectTexts = {
   "affiches-foot": {
     header: "Série d’affiches — Mise en valeur de joueurs par un traitement visuel impactant.",
     context: [
-      "Projet centré sur l’affichage et la promotion d’événements sportifs, avec une attention particulière portée au travail typographique.",
-      "Objectifs : produire des visuels adaptables au print et au digital, garder une forte lisibilité et un style reconnaissable."
+      "Projet centré sur l’affichage et la promotion d’événements sportifs, avec une attention particulière portée au dynamisme des affiches.",
+      "Objectifs : produire des visuels adaptables au print et au digital, garder une lisibilité et un style reconnaissable."
     ],
   },
 };
 
-// Récupère les textes pour le projet courant (fallback si absent)
 const customText = projectTexts[record.slug] || null;
 
-/*  
-  Fonction pour ajouter une légende sur certaines images uniquement,
-  sans JSON, juste via le nom du fichier.
-*/
 function getGalleryCaption(file) {
   if (record.slug === "affiches-foot") {
     if (file.includes("neves2_")) {
@@ -69,7 +61,7 @@ function getGalleryCaption(file) {
     }
   }
 
-  return null; // Pas de légende par défaut
+  return null;
 }
 ---
 
@@ -150,21 +142,46 @@ function getGalleryCaption(file) {
       
       {cover && (
         <section>
-          <div
-            class="overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-[0_25px_80px_rgba(0,0,0,0.75)] cursor-pointer group"
-            data-lightbox="cover"
-          >
-            <img
-              src={cover}
-              alt={record.title}
-              loading="lazy"
-              class={
-                record.slug === "affiches-foot"
-                  ? "w-full h-auto max-h-[420px] object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-                  : "w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-              }
-            />
-          </div>
+          {record.slug === "affiches-foot" ? (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div
+                class="overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-[0_25px_80px_rgba(0,0,0,0.75)] cursor-pointer group"
+                data-lightbox="cover"
+              >
+                <img
+                  src={cover}
+                  alt={record.title}
+                  loading="lazy"
+                  class="w-full h-auto max-h-[420px] object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+              </div>
+              {gallery.find((file) => file.includes("joaoneves1")) && (
+                <div
+                  class="overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-[0_25px_80px_rgba(0,0,0,0.75)] cursor-pointer group"
+                  data-lightbox={gallery.find((file) => file.includes("joaoneves1"))}
+                >
+                  <img
+                    src={pb.files.getUrl(record, gallery.find((file) => file.includes("joaoneves1")))}
+                    alt="Affiche Joao Neves"
+                    loading="lazy"
+                    class="w-full h-auto max-h-[420px] object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                  />
+                </div>
+              )}
+            </div>
+          ) : (
+            <div
+              class="overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-[0_25px_80px_rgba(0,0,0,0.75)] cursor-pointer group"
+              data-lightbox="cover"
+            >
+              <img
+                src={cover}
+                alt={record.title}
+                loading="lazy"
+                class="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+              />
+            </div>
+          )}
         </section>
       )}
 
