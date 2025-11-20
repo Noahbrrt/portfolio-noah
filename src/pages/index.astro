@@ -47,6 +47,29 @@ import Layout from "../layouts/Layout.astro";
       overflow: hidden;
     }
 
+    #hero-bg {
+      position: relative;
+      min-height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    /* Si tu utilises une image ou un canvas pour le fond animé, force sa taille ici */
+    #hero-bg > img, #hero-bg > canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw !important;
+      height: 100vh !important;
+      max-width: none !important;
+      max-height: none !important;
+      min-width: 100vw !important;
+      min-height: 100vh !important;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     .description-container {
       position: absolute;
       inset: 0;
